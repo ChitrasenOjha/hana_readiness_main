@@ -1,0 +1,297 @@
+<mvc:View
+    controllerName="hanareadinessmain.controller.Dashboard"
+    xmlns:mvc="sap.ui.core.mvc"
+    xmlns="sap.m"
+    xmlns:tnt="sap.tnt"
+    xmlns:core="sap.ui.core"
+>
+    <tnt:ToolPage id="_IDGenToolPage">
+        <!--    <tnt:header>
+            <tnt:ToolHeader id="_IDGenToolHeader">
+                <Button
+                    id="_IDGenButton"
+                    icon="sap-icon://menu2"
+                    type="Transparent"
+                />
+
+                 <Title id="_IDGenTitle1" text="HANA Readiness Tool"/> 
+
+                <ToolbarSpacer id="_IDGenToolbarSpacer"/>
+
+                <Button id="_IDGenButton1" icon="sap-icon://search"/>
+                <Button id="_IDGenButton2" icon="sap-icon://bell"/>
+                <Avatar id="_IDGenAvatar" initials="CO"/>
+            </tnt:ToolHeader>
+        </tnt:header> -->
+
+        <tnt:sideContent>
+            <tnt:SideNavigation id="_IDGenSideNavigation">
+                <tnt:NavigationList id="_IDGenNavigationList" >
+                    <tnt:NavigationListItem
+                        id="_IDGenNavigationListItem"
+                        text="Dashboard"
+                        icon="sap-icon://home"
+                    />
+
+                    <tnt:NavigationListItem
+                        id="_IDGenNavigationListItem1"
+                        text="ATC Results"
+                        icon="sap-icon://alert"
+                        select=".onATCResultsPress"
+                    />
+
+                    <!-- <tnt:NavigationListItem
+                        id="_IDGenNavigationListItem2"
+                        text="AI Recommendations"
+                        icon="sap-icon://ai"
+                    />
+
+                    <tnt:NavigationListItem
+                        id="_IDGenNavigationListItem3"
+                        text="Table Mapping"
+                        icon="sap-icon://table-view"
+                    /> -->
+                </tnt:NavigationList>
+            </tnt:SideNavigation>
+        </tnt:sideContent>
+
+        <tnt:mainContents>
+            <Page
+                id="_IDGenPage"
+                showHeader="false"
+            >
+                <content>
+                    <VBox
+                        id="_IDGenVBox"
+                        class="sapUiMediumMargin"
+                    >
+                        <Title
+                            id="_IDGenTitle"
+                            text="Overview"
+                            level="H2"
+                        />
+
+                        <!-- Filter Row -->
+
+                        <HBox
+                            alignItems="End"
+                            class="sapUiSmallMarginTop "
+                        >
+                    
+                            <VBox class="sapUiSmallMarginEnd">
+                                <Label text="Package" />
+                                <Select width="10rem">
+                                    <items>
+                                        <core:Item
+                                            key="Z"
+                                            text="Z*"
+                                        />
+                                    </items>
+                                </Select>
+                            </VBox>
+
+                            <VBox class="sapUiSmallMarginEnd">
+                                <Label text="Program" />
+                                <Select width="12rem">
+                                    <items>
+                                        <core:Item
+                                            key="ECC"
+                                            text="ECC 6.0 EHP8"
+                                        />
+                                    </items>
+                                </Select>
+                            </VBox>
+
+                            <VBox class="sapUiSmallMarginEnd">
+                                <Label text="Variant" />
+                                <Select width="12rem">
+                                    <items>
+                                        <core:Item
+                                            key="S4"
+                                            text="S4_READINESS_2023"
+                                        />
+                                    </items>
+                                </Select>
+                            </VBox>
+ 
+                            <HBox>
+                            <Button
+                                text="Run Full Scan"
+                                icon="sap-icon://play"
+                                type="Emphasized"
+                                class="sapUiSmallMarginBegin"
+                                press=".onRunScan"
+                            />
+                            
+                            <Text
+                                id="txtLastScan"
+                                text="Last Scan: "
+                                class="sapUiSmallMarginBegin sapUiTinyMarginTop"
+                            />
+
+                          
+                            </HBox>
+                        </HBox>
+
+                        <HBox
+                            wrap="Wrap"
+                            justifyContent="Start"
+                            width="100%"
+                            class="sapUiMediumMarginTop"
+                        >
+                            <!-- Total Objects -->
+
+                            <Panel class="kpiCard">
+                                <HBox alignItems="Start">
+                                    <Avatar
+                                        initials="TO"
+                                        displayShape="Circle"
+                                        backgroundColor="Accent6"
+                                    />
+
+                                    <VBox class="sapUiSmallMarginBegin">
+                                        <Text
+                                            text="Total Objects"
+                                            class="kpiTitle"
+                                        />
+
+                                        <Title
+                                            text=""
+                                            level="H1"
+                                            class="kpiValue"
+                                        />
+
+                                        <Text
+                                            text="All Repository Objects"
+                                            class="kpiSubText"
+                                        />
+                                    </VBox>
+                                </HBox>
+                            </Panel>
+
+                            <!-- ATC Findings -->
+
+                            <Panel class="kpiCard">
+                                <HBox alignItems="Start">
+                                    <Avatar
+                                        initials="AT"
+                                        displayShape="Circle"
+                                        backgroundColor="Accent2"
+                                    />
+
+                                    <VBox class="sapUiSmallMarginBegin">
+                                        <Text
+                                            text="ATC Findings"
+                                            class="kpiTitle"
+                                        />
+
+                                        <Title
+                                            text=""
+                                            level="H1"
+                                            class="kpiValue"
+                                        />
+
+                                        <Text
+                                            text="Total Issues Found"
+                                            class="kpiSubText"
+                                        />
+                                    </VBox>
+                                </HBox>
+                            </Panel>
+
+                            <!-- Priority 1 -->
+
+                            <Panel class="kpiCard">
+                                <HBox alignItems="Start">
+                                    <Avatar
+                                        initials="CI"
+                                        displayShape="Circle"
+                                        backgroundColor="Accent7"
+                                    />
+
+                                    <VBox class="sapUiSmallMarginBegin">
+                                        <Text
+                                            text="Priority 1"
+                                            class="kpiTitle"
+                                        />
+
+                                        <Title
+                                            text=""
+                                            level="H1"
+                                            class="kpiValue"
+                                        />
+
+                                        <Text
+                                            text="Critical Issues"
+                                            class="kpiSubText"
+                                        />
+                                    </VBox>
+                                </HBox>
+                            </Panel>
+
+                            <!-- Priority 2 -->
+
+                            <Panel class="kpiCard">
+                                <HBox alignItems="Start">
+                                    <Avatar
+                                        initials="HP"
+                                        displayShape="Circle"
+                                        backgroundColor="Accent4"
+                                    />
+
+                                    <VBox class="sapUiSmallMarginBegin">
+                                        <Text
+                                            text="Priority 2"
+                                            class="kpiTitle"
+                                        />
+
+                                        <Title
+                                            text=""
+                                            level="H1"
+                                            class="kpiValue"
+                                        />
+
+                                        <Text
+                                            text="High Priority Issues"
+                                            class="kpiSubText"
+                                        />
+                                    </VBox>
+                                </HBox>
+                            </Panel>
+
+                            <!-- Fixed By AI -->
+
+                            <Panel class="kpiCard">
+                                <HBox alignItems="Start">
+                                    <Avatar
+                                        initials="AI"
+                                        displayShape="Circle"
+                                        backgroundColor="Accent8"
+                                    />
+
+                                    <VBox class="sapUiSmallMarginBegin">
+                                        <Text
+                                            text="Fixed By AI"
+                                            class="kpiTitle"
+                                        />
+
+                                        <Title
+                                            text=""
+                                            level="H1"
+                                            class="kpiValue"
+                                        />
+
+                                        <Text
+                                            text="Accepted and Implemented"
+                                            class="kpiSubText"
+                                        />
+                                    </VBox>
+                                </HBox>
+                            </Panel>
+                        </HBox>
+                    </VBox>
+                </content>
+            </Page>
+        </tnt:mainContents>
+    </tnt:ToolPage>
+</mvc:View>
