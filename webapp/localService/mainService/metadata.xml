@@ -2,22 +2,52 @@
 <edmx:Edmx Version="1.0" xmlns:edmx="http://schemas.microsoft.com/ado/2007/06/edmx" xmlns:m="http://schemas.microsoft.com/ado/2007/08/dataservices/metadata" xmlns:sap="http://www.sap.com/Protocols/SAPData">
     <edmx:DataServices m:DataServiceVersion="2.0">
         <Schema Namespace="ZHANATIZATION_P_SRV" xml:lang="en" sap:schema-version="1" xmlns="http://schemas.microsoft.com/ado/2008/09/edm">
+            <EntityType Name="Objecttype" sap:content-version="1">
+                <Key>
+                    <PropertyRef Name="ObjName"/>
+                </Key>
+                <Property Name="ObjName" Type="Edm.String" Nullable="false" sap:unicode="false" sap:creatable="false" sap:updatable="false" sap:sortable="false" sap:filterable="false"/>
+            </EntityType>
+            <EntityType Name="VariantDD" sap:content-version="1">
+                <Key>
+                    <PropertyRef Name="Variant"/>
+                </Key>
+                <Property Name="Variant" Type="Edm.String" Nullable="false" sap:unicode="false" sap:creatable="false" sap:updatable="false" sap:sortable="false" sap:filterable="false"/>
+            </EntityType>
             <EntityType Name="ATCResult" sap:content-version="1">
                 <Key>
-                    <PropertyRef Name="Package"/>
-                    <PropertyRef Name="Variant"/>
+                    <PropertyRef Name="DevClass"/>
                     <PropertyRef Name="ObjName"/>
-                    <PropertyRef Name="Line"/>
+                    <PropertyRef Name="ObjType"/>
+                </Key>
+                <Property Name="DevClass" Type="Edm.String" Nullable="false" sap:unicode="false" sap:updatable="false" sap:sortable="false" sap:filterable="false"/>
+                <Property Name="ObjName" Type="Edm.String" Nullable="false" sap:unicode="false" sap:updatable="false" sap:sortable="false" sap:filterable="false"/>
+                <Property Name="ObjType" Type="Edm.String" Nullable="false" sap:unicode="false" sap:updatable="false" sap:sortable="false" sap:filterable="false"/>
+                <Property Name="Priority" Type="Edm.String" Nullable="false" sap:unicode="false" sap:updatable="false" sap:sortable="false" sap:filterable="false"/>
+                <Property Name="CheckTitle" Type="Edm.String" Nullable="false" sap:unicode="false" sap:updatable="false" sap:sortable="false" sap:filterable="false"/>
+                <Property Name="Message" Type="Edm.String" Nullable="false" sap:unicode="false" sap:updatable="false" sap:sortable="false" sap:filterable="false"/>
+                <Property Name="Author" Type="Edm.String" Nullable="false" sap:unicode="false" sap:updatable="false" sap:sortable="false" sap:filterable="false"/>
+                <Property Name="Variant" Type="Edm.String" Nullable="false" sap:unicode="false" sap:updatable="false" sap:sortable="false" sap:filterable="false"/>
+            </EntityType>
+            <EntityType Name="PackageDD" sap:content-version="1">
+                <Key>
+                    <PropertyRef Name="Package"/>
                 </Key>
                 <Property Name="Package" Type="Edm.String" Nullable="false" sap:unicode="false" sap:creatable="false" sap:updatable="false" sap:sortable="false" sap:filterable="false"/>
-                <Property Name="Variant" Type="Edm.String" Nullable="false" sap:unicode="false" sap:creatable="false" sap:updatable="false" sap:sortable="false" sap:filterable="false"/>
-                <Property Name="ObjName" Type="Edm.String" Nullable="false" sap:unicode="false" sap:updatable="false" sap:sortable="false" sap:filterable="false"/>
-                <Property Name="Line" Type="Edm.String" Nullable="false" sap:unicode="false" sap:updatable="false" sap:sortable="false" sap:filterable="false"/>
-                <Property Name="Priority" Type="Edm.String" Nullable="false" sap:unicode="false" sap:updatable="false" sap:sortable="false" sap:filterable="false"/>
-                <Property Name="Message" Type="Edm.String" Nullable="false" sap:unicode="false" sap:updatable="false" sap:sortable="false" sap:filterable="false"/>
+            </EntityType>
+            <EntityType Name="ProgramDD" sap:content-version="1">
+                <Key>
+                    <PropertyRef Name="Program"/>
+                </Key>
+                <Property Name="Program" Type="Edm.String" Nullable="false" sap:unicode="false" sap:creatable="false" sap:updatable="false" sap:sortable="false" sap:filterable="false"/>
+                <Property Name="Package" Type="Edm.String" Nullable="false" sap:unicode="false" sap:creatable="false" sap:updatable="false" sap:sortable="false" sap:filterable="false"/>
             </EntityType>
             <EntityContainer Name="ZHANATIZATION_P_SRV_Entities" m:IsDefaultEntityContainer="true" sap:supported-formats="atom json xlsx">
+                <EntitySet Name="ObjecttypeSet" EntityType="ZHANATIZATION_P_SRV.Objecttype" sap:creatable="false" sap:updatable="false" sap:deletable="false" sap:pageable="false" sap:addressable="false" sap:content-version="1"/>
+                <EntitySet Name="VariantSet" EntityType="ZHANATIZATION_P_SRV.VariantDD" sap:creatable="false" sap:updatable="false" sap:deletable="false" sap:pageable="false" sap:addressable="false" sap:content-version="1"/>
                 <EntitySet Name="ATCResultSet" EntityType="ZHANATIZATION_P_SRV.ATCResult" sap:creatable="false" sap:updatable="false" sap:deletable="false" sap:pageable="false" sap:addressable="false" sap:content-version="1"/>
+                <EntitySet Name="PackageDDSet" EntityType="ZHANATIZATION_P_SRV.PackageDD" sap:creatable="false" sap:updatable="false" sap:deletable="false" sap:pageable="false" sap:addressable="false" sap:content-version="1"/>
+                <EntitySet Name="ProgramDDSet" EntityType="ZHANATIZATION_P_SRV.ProgramDD" sap:creatable="false" sap:updatable="false" sap:deletable="false" sap:pageable="false" sap:addressable="false" sap:content-version="1"/>
             </EntityContainer>
             <atom:link rel="self" href="http://mgcdlapp001:8000/sap/opu/odata/sap/ZHANATIZATION_P_SRV/$metadata" xmlns:atom="http://www.w3.org/2005/Atom"/>
             <atom:link rel="latest-version" href="http://mgcdlapp001:8000/sap/opu/odata/sap/ZHANATIZATION_P_SRV/$metadata" xmlns:atom="http://www.w3.org/2005/Atom"/>

@@ -26,7 +26,7 @@
 
         <tnt:sideContent>
             <tnt:SideNavigation id="_IDGenSideNavigation">
-                <tnt:NavigationList id="_IDGenNavigationList" >
+                <tnt:NavigationList id="_IDGenNavigationList">
                     <tnt:NavigationListItem
                         id="_IDGenNavigationListItem"
                         text="Dashboard"
@@ -77,59 +77,91 @@
                             alignItems="End"
                             class="sapUiSmallMarginTop "
                         >
-                    
                             <VBox class="sapUiSmallMarginEnd">
                                 <Label text="Package" />
-                                <Select width="10rem">
-                                    <items>
-                                        <core:Item
-                                            key="Z"
-                                            text="Z*"
-                                        />
-                                    </items>
-                                </Select>
+                            <ComboBox
+                                id="packageSelect"
+                                width="14rem"
+                                placeholder="Select Package"
+                                selectionChange=".onPackageChange"
+                                change=".onPackageValidate"
+                                items="{
+                                    path:'packageModel>/Packages'
+                                }">
+
+                                <core:Item
+                                    key="{packageModel>Package}"
+                                    text="{packageModel>Package}" />
+
+                            </ComboBox>
                             </VBox>
 
                             <VBox class="sapUiSmallMarginEnd">
-                                <Label text="Program" />
-                                <Select width="12rem">
-                                    <items>
-                                        <core:Item
-                                            key="ECC"
-                                            text="ECC 6.0 EHP8"
-                                        />
-                                    </items>
-                                </Select>
+                                <Label text="Object Type" />
+                                <ComboBox
+                                    id="objectTypeSelect"
+                                    width="11rem"
+                                    placeholder="Select Object Type"
+                                    items="{
+                                        path:'objectTypeModel>/ObjectTypes'
+                                    }">
+
+                                    <core:Item
+                                        key="{objectTypeModel>ObjName}"
+                                        text="{objectTypeModel>ObjName}" />
+
+                                </ComboBox>
+                            </VBox>
+
+                            <VBox class="sapUiSmallMarginEnd">
+                                <Label text="Object Name" />
+                                <ComboBox
+                                    id="objectNameSelect"
+                                    width="12rem"
+                                    placeholder="Object Name"
+                                    filterSecondaryValues="true"
+                                    items="{
+                                        path:'programModel>/Programs'
+                                    }">
+
+                                    <core:Item
+                                        key="{programModel>Program}"
+                                        text="{programModel>Program}" />
+
+                                </ComboBox>
                             </VBox>
 
                             <VBox class="sapUiSmallMarginEnd">
                                 <Label text="Variant" />
-                                <Select width="12rem">
-                                    <items>
-                                        <core:Item
-                                            key="S4"
-                                            text="S4_READINESS_2023"
-                                        />
-                                    </items>
-                                </Select>
+                                <ComboBox
+                                id="variantSelect"
+                                width="12rem"
+                                placeholder="Select Variant"
+                                items="{
+                                    path:'variantModel>/Variants'
+                                }">
+
+                                <core:Item
+                                    key="{variantModel>Variant}"
+                                    text="{variantModel>Variant}" />
+
+                            </ComboBox>
                             </VBox>
- 
+
                             <HBox>
-                            <Button
-                                text="Run Full Scan"
-                                icon="sap-icon://play"
-                                type="Emphasized"
-                                class="sapUiSmallMarginBegin"
-                                press=".onRunScan"
-                            />
-                            
-                            <Text
+                                <Button
+                                    text="Run Full Scan"
+                                    icon="sap-icon://play"
+                                    type="Emphasized"
+                                    class="sapUiSmallMarginBegin"
+                                    press=".onRunScan"
+                                />
+
+                                <!-- <Text
                                 id="txtLastScan"
                                 text="Last Scan: "
                                 class="sapUiSmallMarginBegin sapUiTinyMarginTop"
-                            />
-
-                          
+                            /> -->
                             </HBox>
                         </HBox>
 

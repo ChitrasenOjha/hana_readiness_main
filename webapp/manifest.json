@@ -87,7 +87,7 @@
         "clearControlAggregation": false
       },
       "routes": [
-      {
+        {
           "name": "Dashboard",
           "pattern": "",
           "target": "TargetDashboard"
@@ -98,7 +98,7 @@
           "target": "TargetATCResults"
         }
       ],
-     "targets": {
+      "targets": {
         "TargetDashboard": {
           "viewName": "Dashboard"
         },
