@@ -155,6 +155,33 @@ sap.ui.define([
                             "ATCModel"
                         );
 
+                    // KPI Counts for Dashboard Cards
+                    if (oData.results.length > 0) {
+
+                        var oSummaryModel =
+                            new JSONModel({
+
+                                TotalObjects:
+                                    oData.results[0].TotalObjects.trim(),
+
+                                TotalFindings:
+                                    oData.results[0].TotalFindings.trim(),
+
+                                Priority1Count:
+                                    oData.results[0].Priority1Count.trim(),
+
+                                Priority2Count:
+                                    oData.results[0].Priority2Count.trim()
+
+                            });
+
+                        this.getView().setModel(
+                            oSummaryModel,
+                            "summaryModel"
+                        );
+
+                    }
+
                     this.getView().setBusy(false);
                     oBusyDialog.close();
                     MessageToast.show(
@@ -162,7 +189,6 @@ sap.ui.define([
                         oData.results.length +
                         " findings loaded."
                     );
-
 
                 }.bind(this),
 

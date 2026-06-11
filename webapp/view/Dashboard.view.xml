@@ -188,7 +188,7 @@
                                         />
 
                                         <Title
-                                            text=""
+                                            text="{summaryModel>/TotalObjects}"
                                             level="H1"
                                             class="kpiValue"
                                         />
@@ -218,7 +218,7 @@
                                         />
 
                                         <Title
-                                            text=""
+                                            text="{summaryModel>/TotalFindings}"
                                             level="H1"
                                             class="kpiValue"
                                         />
@@ -248,7 +248,7 @@
                                         />
 
                                         <Title
-                                            text=""
+                                            text="{summaryModel>/Priority1Count}"
                                             level="H1"
                                             class="kpiValue"
                                         />
@@ -278,7 +278,7 @@
                                         />
 
                                         <Title
-                                            text=""
+                                            text="{summaryModel>/Priority2Count}"
                                             level="H1"
                                             class="kpiValue"
                                         />
