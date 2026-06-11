@@ -15,6 +15,8 @@ sap.ui.define([
                         Packages: oData.results
                     });
 
+                    oModel.setSizeLimit(1000);
+                    
                     oView.setModel(
                         oModel,
                         "packageModel"

@@ -3,6 +3,16 @@
     xmlns:mvc="sap.ui.core.mvc"
     xmlns="sap.m"
     xmlns:core="sap.ui.core">
+
+    <Page
+        id="atcResultsPage"
+        title="ATC Findings"
+        enableScrolling="true"
+        showNavButton="true"
+        navButtonPress=".onNavBack"
+        showHeader="false">
+
+        <content>
 <Panel id="_IDGenPanel5"
     headerText="ATC Findings"
     class="sapUiResponsiveMargin atcPanel">
@@ -36,7 +46,7 @@
         growing="true"
         growingScrollToLoad="true"
         sticky="ColumnHeaders"
-        items="{/ATCResults}">
+        items="{ATCModel>/ATCResults}">
 
         <columns>
 
@@ -69,17 +79,17 @@
     <cells>
 
         <ObjectIdentifier id="_IDGenObjectIdentifier"
-            title="{ObjName}"/>
+            title="{ATCModel>ObjName}"/>
 
         <ObjectNumber id="_IDGenObjectNumber"
-            number="{Line}"/>
+            number="{ATCModel> Line}"/>
 
         <ObjectStatus id="_IDGenObjectStatus"
-            text="{Priority}"
+            text="{ATCModel>Priority}"
             state="Error"/>
 
         <Text id="_IDGenText15"
-            text="{Message}"
+            text="{ATCModel>Message}"
             wrapping="false"/>
 
         <Button id="_IDGenButton4"
@@ -96,5 +106,8 @@
     </Table>
 
 </Panel>
+</content>
+
+    </Page>
 
 </mvc:View>

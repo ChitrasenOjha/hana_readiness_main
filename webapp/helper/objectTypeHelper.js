@@ -15,6 +15,8 @@ sap.ui.define([
                         ObjectTypes: oData.results
                     });
 
+                    oObjectTypeModel.setSizeLimit(1000);
+                    
                     oView.setModel(
                         oObjectTypeModel,
                         "objectTypeModel"

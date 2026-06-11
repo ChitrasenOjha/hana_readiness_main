@@ -16,28 +16,27 @@ sap.ui.define([
                     });
 
                     oVariantModel.setSizeLimit(1000);
+                    
                     oView.setModel(
                         oVariantModel,
                         "variantModel"
                     );
                     setTimeout(function () {
 
-    var oCombo =
-        oView.byId("variantSelect");
+                        var oCombo =
+                            oView.byId("variantSelect");
 
-    console.log(
-        "Variant Model Records:",
-        oView.getModel("variantModel")
-            .getProperty("/Variants")
-            .length
-    );
+                        // console.log("Variant Model Records:",
+                        //     oView.getModel("variantModel")
+                        //         .getProperty("/Variants")
+                        //         .length
+                        // );
 
-    console.log(
-        "ComboBox Items:",
-        oCombo.getItems().length
-    );
+                        // console.log("ComboBox Items:",
+                        //     oCombo.getItems().length
+                        // );
 
-}, 1000);
+                    }, 1000);
 
                 },
 

@@ -17,7 +17,21 @@ sap.ui.define([
         "hanareadinessmain.controller.ATCResults",
         {
 
+
             onInit: function () {
+
+                this.getOwnerComponent()
+                    .getRouter()
+                    .getRoute("ATCResults")
+                    .attachPatternMatched(
+                        this._onRouteMatched,
+                        this
+                    );
+
+            },
+            _onRouteMatched: function () {
+
+
                 var oATCModel =
                     this.getOwnerComponent()
                         .getModel("ATCModel");

@@ -33,13 +33,15 @@ sap.ui.define([
 
                 success: function (oData) {
 
-                    console.log("Programs Loaded");
-                    console.log(oData.results);
+                    //console.log("Programs Loaded");
+                    //console.log(oData.results);
 
                     var oProgramModel = new JSONModel({
                         Programs: oData.results
                     });
 
+                    oProgramModel.setSizeLimit(1000);
+                    
                     oView.setModel(
                         oProgramModel,
                         "programModel"

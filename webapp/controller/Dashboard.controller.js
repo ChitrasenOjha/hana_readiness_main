@@ -7,8 +7,10 @@ sap.ui.define([
     "hanareadinessmain/helper/packageHelper",
     "hanareadinessmain/helper/objectNameHelper",
     "hanareadinessmain/helper/objectTypeHelper",
-    "hanareadinessmain/helper/variantHelper"
-], function (Controller, refreshTimeHelper, Filter, FilterOperator, JSONModel, packageHelper, objectNameHelper, objectTypeHelper, variantHelper) {
+    "hanareadinessmain/helper/variantHelper",
+    "sap/m/MessageToast",
+    "sap/m/BusyDialog"
+], function (Controller, refreshTimeHelper, Filter, FilterOperator, JSONModel, packageHelper, objectNameHelper, objectTypeHelper, variantHelper, MessageToast, BusyDialog) {
     "use strict";
 
     return Controller.extend("hanareadinessmain.controller.Dashboard", {
@@ -75,39 +77,66 @@ sap.ui.define([
             var sVariant =
                 this.byId("variantSelect").getSelectedKey();
 
-            var aFilters = [
+            var aFilters = [];
 
-                new Filter(
-                    "DevClass",
-                    FilterOperator.EQ,
-                    sPackage
-                ),
+            if (sPackage) {
 
-                // new Filter(
-                //     "ObjType",
-                //     FilterOperator.EQ,
-                //     sObjectType
-                // ),
+                aFilters.push(
+                    new Filter(
+                        "DevClass",
+                        FilterOperator.EQ,
+                        sPackage
+                    )
+                );
 
-                // new Filter(
-                //     "ObjName",
-                //     FilterOperator.EQ,
-                //     sObjectName
-                // ),
+            }
 
-                new Filter(
-                    "Variant",
-                    FilterOperator.EQ,
-                    sVariant
-                )
+            if (sObjectType) {
 
-            ];
+                aFilters.push(
+                    new Filter(
+                        "ObjType",
+                        FilterOperator.EQ,
+                        sObjectType
+                    )
+                );
+
+            }
+
+            if (sObjectName) {
+
+                aFilters.push(
+                    new Filter(
+                        "ObjName",
+                        FilterOperator.EQ,
+                        sObjectName
+                    )
+                );
+
+            }
+
+            if (sVariant) {
+
+                aFilters.push(
+                    new Filter(
+                        "Variant",
+                        FilterOperator.EQ,
+                        sVariant
+                    )
+                );
+
+            }
 
             var oModel =
                 this.getOwnerComponent().getModel();
 
-            this.getView().setBusy(true);
-            
+            //this.getView().setBusy(true);
+
+            var oBusyDialog = new BusyDialog({
+                //title: "ATC Scan",
+                text: "Running scan, please wait..."
+            });
+            oBusyDialog.open();
 
             oModel.read("/ATCResultSet", {
 
@@ -127,12 +156,23 @@ sap.ui.define([
                         );
 
                     this.getView().setBusy(false);
+                    oBusyDialog.close();
+                    MessageToast.show(
+                        "Scan completed successfully. " +
+                        oData.results.length +
+                        " findings loaded."
+                    );
+
 
                 }.bind(this),
 
                 error: function () {
-
                     this.getView().setBusy(false);
+
+                    oBusyDialog.close();
+                    MessageToast.show(
+                        "Scan failed. Please try again."
+                    );
 
                 }.bind(this)
 
