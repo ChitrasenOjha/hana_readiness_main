@@ -100,6 +100,7 @@
                                 <Label text="Object Type" />
                                 <ComboBox
                                     id="objectTypeSelect"
+                                    selectionChange=".onObjectTypeChange"
                                     width="11rem"
                                     placeholder="Select Object Type"
                                     items="{
@@ -117,6 +118,7 @@
                                 <Label text="Object Name" />
                                 <ComboBox
                                     id="objectNameSelect"
+                                    selectionChange=".onObjectNameChange"
                                     width="12rem"
                                     placeholder="Object Name"
                                     filterSecondaryValues="true"
@@ -135,6 +137,7 @@
                                 <Label text="Variant" />
                                 <ComboBox
                                 id="variantSelect"
+                                selectionChange=".onVariantChange"
                                 width="12rem"
                                 placeholder="Select Variant"
                                 items="{

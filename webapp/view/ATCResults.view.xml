@@ -82,7 +82,7 @@
             title="{ATCModel>ObjName}"/>
 
         <ObjectNumber id="_IDGenObjectNumber"
-            number="{ATCModel> Line}"/>
+            number="{ATCModel>LINE}"/>
 
         <ObjectStatus id="_IDGenObjectStatus"
             text="{ATCModel>Priority}"

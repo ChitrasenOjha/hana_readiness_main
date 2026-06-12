@@ -1,6 +1,5 @@
 sap.ui.define([
     "sap/ui/core/mvc/Controller",
-    "hanareadinessmain/helper/refreshTimeHelper",
     "sap/ui/model/Filter",
     "sap/ui/model/FilterOperator",
     "sap/ui/model/json/JSONModel",
@@ -10,13 +9,12 @@ sap.ui.define([
     "hanareadinessmain/helper/variantHelper",
     "sap/m/MessageToast",
     "sap/m/BusyDialog"
-], function (Controller, refreshTimeHelper, Filter, FilterOperator, JSONModel, packageHelper, objectNameHelper, objectTypeHelper, variantHelper, MessageToast, BusyDialog) {
+], function (Controller, Filter, FilterOperator, JSONModel, packageHelper, objectNameHelper, objectTypeHelper, variantHelper, MessageToast, BusyDialog) {
     "use strict";
 
     return Controller.extend("hanareadinessmain.controller.Dashboard", {
 
         onInit: function () {
-            //refreshTimeHelper.updateTime(this.getView());
             var oModel = this.getOwnerComponent().getModel();
 
             packageHelper.loadPackages(this.getView(), oModel);
@@ -27,6 +25,7 @@ sap.ui.define([
         },
         onPackageChange: function (oEvent) {
 
+            this._clearKPIs();
             var oComboBox = oEvent.getSource();
 
             if (!oComboBox.getSelectedKey()) {
@@ -60,6 +59,38 @@ sap.ui.define([
                 oModel,
                 sPackage
             );
+
+        },
+        _clearKPIs: function () {
+
+            var oSummaryModel = new sap.ui.model.json.JSONModel({
+
+                TotalObjects: "0",
+                TotalFindings: "0",
+                Priority1Count: "0",
+                Priority2Count: "0"
+
+            });
+
+            this.getView().setModel(
+                oSummaryModel,
+                "summaryModel"
+            );
+
+        },
+        onObjectTypeChange: function () {
+
+            this._clearKPIs();
+
+        },
+        onObjectNameChange: function () {
+
+            this._clearKPIs();
+
+        },
+        onVariantChange: function () {
+
+            this._clearKPIs();
 
         },
 
