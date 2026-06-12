@@ -21,8 +21,31 @@ sap.ui.define([
             objectTypeHelper.loadObjectTypes(this.getView(), oModel);
             variantHelper.loadVariants(this.getView(), oModel);
 
+            this.getOwnerComponent()
+        .getRouter()
+        .getRoute("Dashboard")
+        .attachPatternMatched(
+            this._onDashboardMatched,
+            this
+        );
 
         },
+        _onDashboardMatched: function () {
+
+    var oNavList =
+        this.byId("_IDGenNavigationList");
+
+    var oDashboardItem =
+        this.byId("_IDGenNavigationListItem");
+
+    if (oNavList && oDashboardItem) {
+
+        oNavList.setSelectedItem(
+            oDashboardItem
+        );
+
+    }
+},
         onPackageChange: function (oEvent) {
 
             this._clearKPIs();
